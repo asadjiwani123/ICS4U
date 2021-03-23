@@ -1,0 +1,40 @@
+1. Who created the Grantt Chart?
+Bob the Builder
+Joseph Grantt
+Robert Grantt
+Henry Grantt
+Correct Answer: Henry Grantt
+2. Which of the following is not a part of the phases for the Waterfall Model
+Analysis
+Design
+Maintenance
+Uploading
+Correct Answer: Uploading
+3. Who created the Waterfall Model?
+Rolls Royce
+Dora the Explorer
+Winston Royce
+William Royce
+Correct Answer: Winston Royce
+4. When was the Waterfall Model created
+1971
+1970
+1969
+1972
+Correct Answer: 1970
+5. Which phase of the Waterfall Model costs the most amount of money in terms of developing software
+Maintenance
+Testing
+Problem Statement
+Analysis
+Correct Answer: Maintenance
+6. What does UML stand for?
+United Men's League
+Unified Modeling Language
+United Modeling Language
+Correct Answer: Unified Modeling Language
+7. What does ‘SDLC’ stand for?
+Software Development Life Cycle
+Synchronized Development Life Cycle
+Software Development Leading Cycle
+Correct Answer: Software Development Life Cycle
