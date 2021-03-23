@@ -38,3 +38,17 @@ Software Development Life Cycle
 Synchronized Development Life Cycle
 Software Development Leading Cycle
 Correct Answer: Software Development Life Cycle
+8. The client’s happiness is one way to measure the success of a project
+True
+False
+Correct Answer: True
+9. Delivering a project on time is an important part of a successful project
+True
+False
+Correct Answer: True
+10. How many phases are in the Waterfall Model?
+6
+5
+7
+4
+Correct Answer: 6
