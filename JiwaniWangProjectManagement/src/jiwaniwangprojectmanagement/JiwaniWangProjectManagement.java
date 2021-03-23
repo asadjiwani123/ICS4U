@@ -10,9 +10,18 @@ package jiwaniwangprojectmanagement;
 import javax.swing.JOptionPane;
 
 public class JiwaniWangProjectManagement {
-    int option = Integer.parseInt(JOptionPane.showInputDialog("What would you like to do?\n1. Look at study notes\n2. Do a multiple choice quiz\n3. Exit"));
+    
+    public static void main(String[] args){
+        int option;
+        option = Integer.parseInt(JOptionPane.showInputDialog("What would you like to do?\n1. Look at study notes"
+                + "\n2. Do a multiple choice quiz\n3. Exit"));
+        
+        if (option == 1) {
+            JOptionPane.showMessageDialog(null, "For all the flashcards, hit the spacebar to show the answer for the question, and enter 'esc' to exit");
+            
+        }
+    }
+    
 
-    if (option == 1) {
-   
-}
+    
 }
