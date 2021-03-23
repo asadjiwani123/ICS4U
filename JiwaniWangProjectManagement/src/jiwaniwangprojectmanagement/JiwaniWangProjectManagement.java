@@ -26,7 +26,23 @@ public class JiwaniWangProjectManagement {
             Scanner qSc = new Scanner(qFile);
             while (fSc.hasNextLine()) {
                 String question, answer;
-                boolean reverse;
+                question = fSc.nextLine();
+                answer = fSc.nextLine();
+                Flashcard temp = new Flashcard(question, answer);
+                cards.add(temp);
+            }
+            while(qSc.hasNextLine()) {
+                String question, correct, tempAns;
+                tempAns = "";
+                ArrayList<String> answers = new ArrayList<>();
+                while (qSc.hasNextLine()) {
+                    question = qSc.nextLine();
+                    while (!tempAns.substring(0,7).equals("Correct") && !tempAns.substring(8,15).equals("Answer:")) {
+                        answers.add(tempAns);
+                    }
+                    correct = tempAns;
+                    MCQuestion q = new MCQuestion(question, correct, answers.toArray());
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println(e);
@@ -35,10 +51,24 @@ public class JiwaniWangProjectManagement {
         int option;
         option = Integer.parseInt(JOptionPane.showInputDialog("What would you like to do?\n1. Look at study notes"
                 + "\n2. Do a multiple choice quiz\n3. Exit"));
-        
-        if (option == 1) {
-            JOptionPane.showMessageDialog(null, "For all the flashcards, hit the spacebar to show the answer for the question, and enter 'esc' to exit");
+        while (option!= -1) {
+            if (option == 1) {
+                JOptionPane.showMessageDialog(null, "For all the flashcards, hit the spacebar to show the answer for the question, and enter 'esc' to exit");
+                
+                
+                
+                
+            } else if (option==2) {
+                
+            }
             
+            
+            
+            option = Integer.parseInt(JOptionPane.showInputDialog("What would you like to do?\n1. Look at study notes"
+                + "\n2. Do a multiple choice quiz\n3. Exit"));
         }
+        
+        
+        
     }
 }
