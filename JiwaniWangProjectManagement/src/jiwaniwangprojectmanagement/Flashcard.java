@@ -52,7 +52,12 @@ public class Flashcard {
         return f2;
     }
     public boolean equals(Flashcard f) {
-        return this.question==f.question && this.answer==f.answer && this.reverse==f.reverse;
+        if (this.question!=null && this.answer!=null) {
+            return this.question.equals(f.question) && this.answer.equals(f.answer) && this.reverse==f.reverse;
+        } else {
+            //might cause an error if something is null
+            return false;
+        }
     }
     public String toString() {
         return "Question: " + question + 
