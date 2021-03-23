@@ -24,28 +24,41 @@ public class JiwaniWangProjectManagement {
             File qFile = new File ("src\\jiwaniwangprojectmanagement\\quiz.txt");
             Scanner fSc = new Scanner(fFile);
             Scanner qSc = new Scanner(qFile);
+            String question, answer;
             while (fSc.hasNextLine()) {
-                String question, answer;
                 question = fSc.nextLine();
                 answer = fSc.nextLine();
                 Flashcard temp = new Flashcard(question, answer);
                 cards.add(temp);
             }
+            String qQuestion, correct, tempAns;
+            String[]tempArr;
             while(qSc.hasNextLine()) {
-                String question, correct, tempAns;
                 tempAns = "";
                 ArrayList<String> answers = new ArrayList<>();
-                while (qSc.hasNextLine()) {
-                    question = qSc.nextLine();
-                    while (!tempAns.substring(0,7).equals("Correct") && !tempAns.substring(8,15).equals("Answer:")) {
+  
+                qQuestion = qSc.nextLine();
+                tempAns = qSc.nextLine();
+                tempArr = tempAns.split(" ");
+                if (tempArr.length >2) {
+                    while (!tempArr[0].equals("Correct") && !tempArr[1].equals("Answer:")) {
                         answers.add(tempAns);
+                        if (qSc.hasNextLine()) {
+                            tempAns = qSc.nextLine(); 
+                            tempArr = tempAns.split(" ");
+                        }
                     }
-                    correct = tempAns;
-                    MCQuestion q = new MCQuestion(question, correct, answers.toArray());
                 }
+                correct = tempAns;
+                String[] sAnswers = answers.toArray(new String[answers.size()]);
+                MCQuestion q = new MCQuestion(qQuestion, correct, sAnswers);
             }
         } catch (FileNotFoundException e) {
             System.out.println(e);
+        }
+        
+        for (int i = 0; i < quiz.length; i++) {
+            System.out.println("");
         }
         
         int option;
