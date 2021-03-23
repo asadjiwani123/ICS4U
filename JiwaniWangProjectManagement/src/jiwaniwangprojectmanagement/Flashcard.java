@@ -3,10 +3,6 @@
  */
 package jiwaniwangprojectmanagement;
 
-/**
- *
- * @author edwan2505
- */
 public class Flashcard {
     private String question, answer;
     private boolean reverse;
@@ -33,24 +29,51 @@ public class Flashcard {
         this.reverse = reverse;
     }
     
+    /**
+     * Getter method for the question on flashcard
+     * @return the question on the flashcard
+     */
     public String getQuestion() {
         return question;
     }
+    
+    /**
+     * Getter method for the answer on flashcard
+     * @return the answer on the flashcard
+     */
     public String getAnswer() {
         return answer;
     }
+    
+    /**
+     * Getter method to check if the flashcard is reversed (you see answer and you have to come up with question)
+     * @return true or false depending on if flashcard is reversed
+     */
     public boolean getReverse() {
         return reverse;
     }
     
+    /**
+     * Set the reversed value of flashcard
+     * @param newReverse - the reversed value of flashcard
+     */
     public void setReverse(boolean newReverse) {
         reverse = newReverse;
     }
     
+    /**
+     * Clone method- create new flashcard with same attributes as this one
+     * @return new flashcard with same attributes
+     */
     public Flashcard clone () {
         Flashcard f2 = new Flashcard(question, answer, reverse);
         return f2;
     }
+    /**
+     * Equals method - check if another flashcard is equal to flashcard in this class
+     * @param f - the other flashcard to check
+     * @return true or false depending on if flashcard is equal
+     */
     public boolean equals(Flashcard f) {
         if (this.question!=null && this.answer!=null) {
             return this.question.equals(f.question) && this.answer.equals(f.answer) && this.reverse==f.reverse;
@@ -59,6 +82,10 @@ public class Flashcard {
             return false;
         }
     }
+    /**
+     * Create a String representation of all the flashcard attributes
+     * @return a String representation of all the flashcard attributes
+     */
     public String toString() {
         return "Question: " + question + 
                 "\nAnswer: " + answer +
