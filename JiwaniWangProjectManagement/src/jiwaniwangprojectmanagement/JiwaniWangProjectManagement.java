@@ -44,12 +44,15 @@ public class JiwaniWangProjectManagement {
             }
             //declare variables for the fields in second data file
             String qQuestion, correct, tempAns;
+            //initialize the tempans variable to blank
+            tempAns = "";
+            //initialize the correct variable to blank
+            correct = "";    
             //create an array for the correct answers
             String[]tempArr;
             //while the quiz data file has data
             while(qSc.hasNextLine()) {
-                //initialize the tempans variable to blank
-                tempAns = "";
+                
                 //create an array list of answers
                 ArrayList<String> answers = new ArrayList<>();
   
@@ -61,10 +64,10 @@ public class JiwaniWangProjectManagement {
                 //assign the split answer to the correct answers array
                 tempArr = tempAns.split(" ");
                 //if the length of the answers array is greater than 2
-                if (tempArr.length >2) {
-                    /*while the object in the answers array at index 0 is not equal to "Correct" and 
-                    the object in the answers array at index 0 is not equal to "Answer:"*/
-                    while (!tempArr[0].equals("Correct") && !tempArr[1].equals("Answer:")) {
+//                if (tempArr.length >2) {
+                    //the correct answer will always start with "Correct Answer: "
+                    //repeat until we get to it
+                    while (!tempArr[0].equals("Correct_Answer:")) {
                         //add the choice read in from data file to the array list of answers
                         answers.add(tempAns);
                         //if the data file has more data
@@ -76,20 +79,22 @@ public class JiwaniWangProjectManagement {
                             tempArr = tempAns.split(" ");
                         }
                     }
-                }
+//                }
                 //assign the choice from data file as the correct answer
                 correct = tempAns;
                 //create an Array that contains the choice of answers
                 String[] sAnswers = answers.toArray(new String[answers.size()]);
                 //create a new MCQuestion object by using the question, the correct answer, and the choice of answers
                 MCQuestion q = new MCQuestion(qQuestion, correct, sAnswers);
+                //add that question to the quiz
+                quiz.add(q);
             }
         } catch (FileNotFoundException e) { //if file not found
             System.out.println(e);
         }
         
         for (int i = 0; i < quiz.size(); i++) { //loop through the quiz array list
-            System.out.println(""); //print out a blank line
+            System.out.println(quiz.get(i)); //print out a blank line
         }
         
         int option; //create variable for the user's option in main menu
@@ -100,7 +105,7 @@ public class JiwaniWangProjectManagement {
         while (end == false) {
             //if the user chose to do a quiz
             if (option == 2) {
-   
+                
             }
             //if the user chose to do the flashcards
             else if (option == 1) {

@@ -3,6 +3,8 @@
  */
 package jiwaniwangprojectmanagement;
 
+import java.util.Arrays;
+
 public class MCQuestion {
     //declare attributes of the MCQuestion
     private String question, correct;
@@ -18,20 +20,8 @@ public class MCQuestion {
         //set the question and answer to the parameter
         this.question = question; 
         this.answers = answers;
-        //create boolean variable
-        boolean flag = false;
-        //loop through the possible answers array
-        for (int i = 0; i < answers.length; i++) {
-            if (correct.equals(answers[i])) { //if the possible answer at the current i value is the same as the correct answer
-                flag = true; //set flag to true
-                break;
-            }
-        } //if flag equals true
-        if (flag) {
-            this.correct = correct; //set correct answer to the answer
-        } else {//if flag is false
-            correct = "_ERROR"; //set the correct answer to an error message
-        }
+        //take away "Correct_Answer:" from the string
+        this.correct = correct.substring(15);
     }
     
     /**
@@ -78,10 +68,25 @@ public class MCQuestion {
         //if all attributes have values
         if (this.question!=null && this.correct!=null && this.answers!=null) {
             //return true
-            return this.question.equals(q.question) && this.answers.equals(q.answers) && this.correct.equals(q.correct);
-        } else {
-            //might cause an error when something is null
-            return false;
+            return this.question.equals(q.question) && Arrays.equals(this.answers, q.answers) && this.correct.equals(q.correct);
+        } 
+        //if both questions are null
+        return false;
+        
+    }
+    
+    public String toString() {
+        //string to hold all answers
+        String ans = "";
+        //iterate through answers and add them together
+        for (int i = 0; i < answers.length; i++) {
+            if (i != answers.length-1) {
+                ans += answers[i] + "\n";
+            } else {
+                //don't add a newline on last line
+                ans += answers[i];
+            }
         }
+        return "Question: " + question + "\nAnswers: " + ans + "\nCorrect Answer: " + correct;
     }
 }

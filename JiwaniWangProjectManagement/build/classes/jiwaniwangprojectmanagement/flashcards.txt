@@ -1,0 +1,14 @@
+What is the name of the method used in the SDLC?
+Answer: Waterfall Model
+What are the phases of the waterfall model?
+Answer: Problem statement, Analysis, Design, Implementation, Integration/Test, Maintenance
+Which phase of the waterfall model has the highest cost when it comes to developing software
+Answer: Maintenance phase
+Who created the Waterfall Model and when did he/she create it?
+Answer: Dr. Winston Royce created it in 1970
+Who created the Grantt Chart?
+Answer: Henry Grantt
+What is the purpose of the Grantt Chart?
+Answer: It helps programmers visualize and track the schedule and actual progress of projects
+What does UML stand for?
+Answer: Unified Modeling Language
