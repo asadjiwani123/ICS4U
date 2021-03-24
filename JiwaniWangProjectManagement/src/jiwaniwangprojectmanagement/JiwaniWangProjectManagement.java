@@ -98,43 +98,84 @@ public class JiwaniWangProjectManagement {
         }
         
         int option; //create variable for the user's option in main menu
-        //ask user what thy would like to do
-        option = Integer.parseInt(JOptionPane.showInputDialog("What would you like to do?\n1. Look at flashcards"
-                + "\n2. Do a multiple choice quiz\n3. Exit"));
+        
         //while the user does not choose to exit
+//        loops:
         while (end == false) {
+            //ask user what thy would like to do
+            option = Integer.parseInt(JOptionPane.showInputDialog("What would you like to do?\n1. Look at flashcards"
+                + "\n2. Do a multiple choice quiz\n3. Exit"));
+            
+            quizLoop:
             //if the user chose to do a quiz
             if (option == 2) {
-                
+                ArrayList<Integer> finishedQ = new ArrayList();
+                int rand, ans, numCorrect;
+                String qQuestion, qCorrect, ask, sAns;
+                String[] qAnswers;
+                numCorrect = 0;
+                ans = 0;
+                while (finishedQ.size() < quiz.size()) {
+                    rand = (int) (Math.random() * quiz.size());
+                    if (!finishedQ.contains(rand)) {
+                        finishedQ.add(rand);
+                        qQuestion = quiz.get(rand).getQuestion();
+                        qAnswers = quiz.get(rand).getAnswers();
+                        qCorrect = quiz.get(rand).getCorrect();
+                        ask = qQuestion + "\n";
+                        for (int i = 0; i < qAnswers.length; i++) {
+                            ask += (i+1) + ": " + qAnswers[i] + "\n";
+                        }
+                        String output = "Current Score: " + numCorrect + "/" + (finishedQ.size()-1) + " (" + quiz.size() + " questions total)\n" + ask + "\nInput which question you think is right (by number)\nTYPE x or q TO EXIT";
+                        sAns = JOptionPane.showInputDialog(null, output);
+                        if (sAns.toLowerCase().equals("x")||sAns.toLowerCase().equals("q")) {
+                            JOptionPane.showMessageDialog(null, "Congrats! You got " + numCorrect + "/" + (finishedQ.size()-1 )+ " right!");
+                            break quizLoop;
+                        }
+                        while (sAns.equals("") || !sAns.matches("[0-9]+") || Integer.parseInt(sAns) > qAnswers.length) {
+                            sAns = JOptionPane.showInputDialog(null, "PLEASE INPUT A VALID ANSWER\n\n" + output);
+                        }
+                        ans = Integer.parseInt(sAns);
+                        
+                        if (qAnswers[ans-1].equals(qCorrect)) {
+                            numCorrect++;
+                            JOptionPane.showMessageDialog(null,"You were right!");
+                        } else {
+                            JOptionPane.showMessageDialog(null,"You were wrong :(");
+                        }
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "Congrats! You got " + numCorrect + "/" + quiz.size() + " right!");
             }
             //if the user chose to do the flashcards
             else if (option == 1) {
                 String flashcardChoice = null; //create variable for the user's option in submenu
 
-                    for (int i = 0; i < cards.size(); i++) { //loop through the array list containing the flash cards
+                for (int i = 0; i < cards.size(); i++) { //loop through the array list containing the flash cards
                     //show user flashcard and ask user what they would like to do with flashcard
-                        flashcardChoice = JOptionPane.showInputDialog("Type 'b' to go to the previous flashcard. Type 'f' to "
-                            + "see the answer for the current flashcard. Type 'n' for the next flashcard."
-                            + "\n\n" + cards.get(i).getQuestion());
+                    flashcardChoice = JOptionPane.showInputDialog("Type 'b' to go to the previous flashcard. Type 'f' to "
+                        + "see the answer for the current flashcard. Type 'n' for the next flashcard."
+                        + "\nType x or q to escape\n" + cards.get(i).getQuestion()).toLowerCase();
                     //if the user chose to see the answer for the flashcard
-                    if (flashcardChoice.toLowerCase().equals("f")) {
+                    if (flashcardChoice.equals("f")) {
                         //get the answer for the current flashcard and display it
                         JOptionPane.showMessageDialog(null, cards.get(i).getAnswer());
                     //if the user chose to go to the previous flashcard
-                    }else if (flashcardChoice.toLowerCase().equals("b")){
+                    } else if (flashcardChoice.equals("b")){
                         if (i - 2 >= 0){ //check to see if there are previous questions
                             i = i - 2; //if there are, then go to the previous flashcard y subtracting 2 from the i val
                         }else{ //if there are not previous questions
                             i = i; //do nothing
                         }
-                    }else if (flashcardChoice.toLowerCase().equals("n")){ //if the user chose to view the next flashcard
+                    } else if (flashcardChoice.toLowerCase().equals("n")){ //if the user chose to view the next flashcard
                         i = i;//do nothing
-                    }else{ //if the user entered an incorrect option, error check user input
+                    } else if (flashcardChoice.equals("x") || flashcardChoice.equals("q")) {
+                        break;
+                    } else{ //if the user entered an incorrect option, error check user input
                         JOptionPane.showMessageDialog(null, "Error: Enter appropriate option"); //tell user to select proper option
                     }
                 }
-                
-            }else if (option == 3){ //if the user chose to exit
+            } else if (option == 3){ //if the user chose to exit
                 JOptionPane.showMessageDialog(null, "Goodbye!"); //end program
                 end = true; //set the end variable to true in order to end the while loop
             }else{ //if the user entered an incorrec toption, error check user input

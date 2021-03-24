@@ -20,8 +20,8 @@ public class MCQuestion {
         //set the question and answer to the parameter
         this.question = question; 
         this.answers = answers;
-        //take away "Correct_Answer:" from the string
-        this.correct = correct.substring(15);
+        //take away "Correct_Answer: " from the string
+        this.correct = correct.substring(16);
     }
     
     /**
